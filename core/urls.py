@@ -1,5 +1,5 @@
 """
-URL configuration for Quiz project.
+URL configuration for core project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -21,7 +21,9 @@ from . import yasg
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include("blog.urls")),
-    path("api/auth/", include("users.urls"))
+    path("api/v2/", include("quiz_result.urls")),
+    path("api/auth/", include("users.urls")),
+    path("api/auth_token/", include("djoser.urls.authtoken")),
 ]
 
 urlpatterns += yasg.urlpatterns

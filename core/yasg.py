@@ -6,7 +6,7 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title='ToDoList API Documentation',
+        title='Quiz API Documentation',
         default_version='V1',
         description='Это документация для ToDoList',
         terms_of_service="https://www.google.com/policies/terms/",

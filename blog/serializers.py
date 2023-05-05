@@ -5,14 +5,14 @@ from .models import Quiz, Question, Answer
 
 # serializers for get answers
 class AnswerSerializer(serializers.ModelSerializer):
-    question = serializers.StringRelatedField()
+    # question = serializers.StringRelatedField()
 
     class Meta:
         model = Answer
         fields = ['id', 'title', 'correct', 'question']
-        extra_kwargs = {
-            'question': {'read_only': True}
-        }
+        # extra_kwargs = {
+        #     'question': {'read_only': True}
+        # }
 
 
 # serializers for get questions

@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from .models import QuizUser
+from .serializers import QuizUserSerializer
+
+
+class QuizUserModelViewSet(ModelViewSet):
+    queryset = QuizUser.objects.all()
+    serializer_class = QuizUserSerializer
+
+
+
