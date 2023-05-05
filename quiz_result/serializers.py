@@ -5,7 +5,7 @@ from .models import QuizUser, UserAnswers
 class UserAnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnswers
-        fields = "__all__"
+        fields = ['question', 'answer']
 
 
 class QuizUserSerializer(serializers.ModelSerializer):
@@ -13,11 +13,11 @@ class QuizUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = QuizUser
-        fields = "__all__"
+        fields = ['custom_user', 'quiz', 'user_answers']
 
     def create(self, validated_data):
         user_answers_data = validated_data.pop('user_answers')
-        quiz_user = super().create(**validated_data)
+        quiz_user = QuizUser.objects.create(**validated_data)
         for u in user_answers_data:
             UserAnswers.objects.create(
                 quiz_user=quiz_user,

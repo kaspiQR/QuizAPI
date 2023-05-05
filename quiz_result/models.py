@@ -5,18 +5,18 @@ from users.models import CustomUser
 
 
 class QuizUser(models.Model):
-    user = models.ForeignKey(
+    custom_user = models.ForeignKey(
         CustomUser, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    time_start = models.DateTimeField()
-    time_end = models.DateTimeField()
+    time_start = models.DateTimeField(auto_now_add=True)
+    time_end = models.DateTimeField(auto_now_add=True)
 
     @property
     def current_answer(self):
         pass
 
     def __str__(self):
-        return f"{self.user.username}:{self.quiz.title}"
+        return f"{self.custom_user.username}:{self.quiz.title}"
 
 
 class UserAnswers(models.Model):
