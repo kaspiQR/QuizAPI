@@ -13,7 +13,11 @@ class QuizUser(models.Model):
 
     @property
     def current_answer(self):
-        pass
+        return self.user_answers.filter(answer__correct=True)
+
+    @property
+    def current_answer_count(self):
+        return self.user_answers.filter(answer__correct=True).count()
 
     def __str__(self):
         return f"{self.custom_user.username}:{self.quiz.title}"
